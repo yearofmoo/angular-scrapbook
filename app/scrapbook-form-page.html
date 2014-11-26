@@ -1,47 +1,24 @@
-<form ng-submit="scrapbookFormCtrl.submit(scrapbookFormCtrl.data.embed)" class="row">
+<form name="embedForm" ng-submit="scrapbookFormCtrl.submit(embedForm.$valid, data.embed)" class="row">
 
   <div class="field">
     <label>Resource URL:</label>
     <input type="url"
            class="input text"
-           ng-model="scrapbookFormCtrl.data.url"
-           ng-change="scrapbookFormCtrl.load(scrapbookFormCtrl.data.url)"
+           ng-model="data.url"
+           ng-model-options="{debounce: { default: 200 }}"
            required />
     <p>
       Enter a Youtube URL, Instagram Photo or any website
     </p>
   </div>
 
-  <div ng-if="scrapbookFormCtrl.loading">
-    Loading...
-  </div>
-
-  <div ng-if="scrapbookFormCtrl.embedError">
-    Invalid embed URL
-  </div>
-
-  <fieldset ng-if="scrapbookFormCtrl.data.embed" class="row">
-    <img ng-src="{{ scrapbookFormCtrl.data.embed.image }}" class="four columns" />
-    <div class="eight columns">
-      <h5>Title:</h5>
-      <p>{{ scrapbookFormCtrl.data.embed.url }}</p>
-
-      <h5>URL:</h5>
-      <p>{{ scrapbookFormCtrl.data.embed.url }}</p>
-      
-      <h5>Description:</h5>
-      <p>{{ scrapbookFormCtrl.data.embed.description }}</p>
-
-      <h5>Keywords:</h5>
-      <p>
-        <span ng-repeat="keyword in scrapbookFormCtrl.data.embed.keywords">
-          {{ keyword }},
-        </span>
-      </p>
-    </div>
+  <fieldset>
+    <scrapbook-embed-field 
+      input-url="data.url"
+      ng-model="data.embed" required></scrapbook-embed-field>
   </fieldset>
 
-  <nav class="actions" ng-if="scrapbookFormCtrl.data.embed">
+  <nav class="actions" ng-if="data.embed">
     <div class="medium btn default">
       <input type="submit" value="Create Posting" />
     </div>

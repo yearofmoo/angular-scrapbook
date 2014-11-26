@@ -1,0 +1,32 @@
+<div ng-if="ctrl.ready">
+  Please enter a URL above
+</div>
+
+<div ng-if="ctrl.loading">
+  Loading...
+</div>
+
+<div ng-if="ctrl.embedError">
+  Invalid embed URL
+</div>
+
+<div class="row" ng-if="ctrl.embed">
+  <img ng-src="{{ ctrl.embed.image }}" class="four columns" />
+  <div class="eight columns">
+    <h5>Title:</h5>
+    <p>{{ ctrl.embed.url }}</p>
+
+    <h5>URL:</h5>
+    <p>{{ ctrl.embed.url }}</p>
+    
+    <h5>Description:</h5>
+    <p>{{ ctrl.embed.description }}</p>
+
+    <h5>Keywords:</h5>
+    <p>
+      <span ng-repeat="keyword in ctrl.embed.keywords">
+        {{ keyword }},
+      </span>
+    </p>
+  </div>
+</div>

@@ -115,26 +115,8 @@ angular.module('AngularScrapbookApp',
     function(surveyRegistry,   scrapbookEmbedExtractor,   $location) {
 
     var ctrl = this;
-    ctrl.data = {};
-
-    this.load = function(url) {
-      ctrl.loading = true;
-      ctrl.embedError = false;
-      ctrl.data.embed = null;
-
-      if (!url) return;
-
-      return scrapbookEmbedExtractor(url).then(function(data) {
-        ctrl.data.embed = data;
-        ctrl.loading = false;
-      }, function() {
-        ctrl.embedError = true;
-        ctrl.loading = false;
-      });
-    };
-
-    this.submit = function(data) {
-      if (!data) return;
+    this.submit = function(valid, data) {
+      if (!valid) return;
 
       surveyRegistry.add(data);
       $location.path('/');
@@ -177,4 +159,46 @@ angular.module('AngularScrapbookApp',
         };
       }
     }
+  }])
+
+  .directive('scrapbookEmbedField',
+    ['scrapbookEmbedExtractor', function(scrapbookEmbedExtractor) {
+
+    return {
+      templateUrl: 'scrapbook-embed-field-template.html',
+      controllerAs: 'ctrl',
+      require: ['ngModel', 'scrapbookEmbedField'],
+      link : function(scope, element, attrs, ctrls) {
+        var ngModel = ctrls[0];
+        var ctrl = ctrls[1];
+        ctrl.setModel = function(value) {
+          ngModel.$setViewValue(value);
+        };
+      },
+      controller : ['$scope', '$attrs', function($scope, $attrs) {
+        var ctrl = this;
+        $scope.$watch($attrs.inputUrl, function(url) {
+          ctrl.setModel(null);
+          ctrl.embed = null;
+
+          if (!url) {
+            ctrl.ready = true;
+            return;
+          }
+          
+          ctrl.embedError = false;
+          ctrl.loading = true;
+          ctrl.ready = false;
+
+          scrapbookEmbedExtractor(url).then(function(data) {
+            ctrl.loading = false;
+            ctrl.embed = data;
+            ctrl.setModel(data);
+          }, function() {
+            ctrl.loading = false;
+            ctrl.embedError = true;
+          });
+        });
+      }]
+    };
   }])
