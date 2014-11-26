@@ -2,7 +2,7 @@
   padding:20px;
 }
 
-.scrapbook-list {
+scrapbook-list {
   -ms-box-orient: horizontal;
   display: -webkit-box;
   display: -moz-box;
@@ -15,7 +15,7 @@
   flex-flow: wrap row;
 }
 
-.scrapbook-entry {
+scrapbook-entry {
   min-width:400px;
   max-height:300px;
   height:300px;
@@ -27,7 +27,7 @@
   flex-grow: 3;
 }
 
-.scrapbook-entry img {
+scrapbook-entry img {
   position:absolute;
   top:50%;
   left:50%;
@@ -36,7 +36,7 @@
   transform:translateX(-50%) translateY(-50%);
 }
 
-.scrapbook-entry .details {
+scrapbook-entry .details {
   position:absolute;
   top:0;
   left:0;
@@ -48,22 +48,18 @@
   opacity:0;
 }
 
-.scrapbook-entry .details,
-.scrapbook-entry .heading {
+scrapbook-entry .details,
+scrapbook-entry .heading {
   color:white;
 }
 
-.scrapbook-entry .heading {
+scrapbook-entry .heading {
   text-overflow:ellipsis; 
   overflow: hidden;
   white-space: nowrap; 
   width:100%;
 }
 
-.scrapbook-entry:hover .details {
+scrapbook-entry:hover .details {
   opacity:1;
-}
-
-.scrapbook-search {
-  margin-top:10px;
 }

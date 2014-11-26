@@ -1,24 +1,9 @@
-<section class="scrapbook-list">
-  <div class="row" ng-if="count(listings) == 0">
+<scrapbook-list entries="scrapbookCtrl.entries" on-remove="scrapbookCtrl.remove(entry)">
+  <div class="row" ng-if="isEmpty">
     <h2>No Results!</h2>
     <p>There were no records found</p>
   </div>
 
-  <div ng-repeat="listing in scrapbookCtrl.entries as listings" class="scrapbook-entry">
-    <img ng-src="{{ listing.image }}" />
-    <div class="details">
-      <h3 class="heading">
-        {{ listing.title }}
-      </h3>
-      <p>{{ listing.description }}</p>
-      <nav class="scrapbook-entry-actions">
-        <span class="btn medium primary">
-          <a href="{{ listing.url }}" target="_blank">View</a>
-        </span>
-        <span class="btn medium danger">
-          <button ng-click="scrapbookCtrl.remove(listing)">Remove</button>
-        </span>
-      </nav>
-    </div>
-  </div>
-</section>
+  <scrapbook-entry entry="listing" ng-repeat="listing in list.entries">
+  </scrapbook-entry>
+</scrapbook-list>

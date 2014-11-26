@@ -83,12 +83,8 @@ angular.module('AngularScrapbookApp',
   .controller("ScrapbookPageController", ['surveyRegistry', '$location', '$rootScope',
                                   function(surveyRegistry,   $location,   $rootScope) {
     this.entries = surveyRegistry.list();
-
-    var ctrl = this;
     this.remove = function(entry) {
-      var id = entry.id + "";
-      surveyRegistry.remove(id);
-      delete ctrl.entries[id];
+      surveyRegistry.remove(entry.id);
     };
   }])
 
@@ -141,4 +137,42 @@ angular.module('AngularScrapbookApp',
       surveyRegistry.add(data);
       $location.path('/');
     }; 
+  }])
+
+  .directive('scrapbookList', [function() {
+    return {
+      controllerAs: 'list',
+      controller: ['$scope', '$attrs', function($scope, $attrs) {
+        this.entries = $scope.$eval($attrs.entries);
+        this.isEmpty = !this.entries || Object.keys(this.entries) == 0;
+
+        var ctrl = this;
+        this.remove = function(entry) {
+          $scope.$eval($attrs.onRemove, {
+            entry: entry 
+          });
+          delete ctrl.entries[entry.id];
+        };
+      }]
+    }
+  }])
+
+  .directive('scrapbookEntry', [function() {
+    return {
+      transclude: true,
+      templateUrl: './scrapbook-entry-template.html',
+      controllerAs: 'ctrl',
+      require: ['^?scrapbookList','scrapbookEntry'],
+      controller: ['$scope', '$attrs', function($scope, $attrs) {
+        var entry = $scope.$eval($attrs.entry);
+        this.data = entry;
+      }],
+      link : function(scope, element, attrs, ctrls) {
+        var scrapbookCtrl = ctrls[0];
+        var ctrl = ctrls[1];
+        ctrl.remove = function() {
+          scrapbookCtrl && scrapbookCtrl.remove(ctrl.data);
+        };
+      }
+    }
   }])

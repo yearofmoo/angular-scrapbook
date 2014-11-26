@@ -1,0 +1,16 @@
+<img ng-src="{{ ctrl.data.image }}" />
+<div class="details">
+  <h3 class="heading">
+    {{ ctrl.data.title }}
+  </h3>
+  <p>{{ ctrl.data.description }}</p>
+  <div ng-transclude></div>
+  <nav class="scrapbook-ctrl-actions">
+    <span class="btn medium primary">
+      <a href="{{ ctrl.data.url }}" target="_blank">View</a>
+    </span>
+    <span class="btn medium danger">
+      <button ng-click="ctrl.remove()">Remove</button>
+    </span>
+  </nav>
+</div>
