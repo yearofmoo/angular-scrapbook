@@ -1,0 +1,33 @@
+{
+  "name": "angular-embedly",
+  "version": "0.0.4",
+  "homepage": "https://github.com/Urigo/angular-embedly",
+  "authors": [
+    "Moran Fine <moranfine@gmail.com>"
+  ],
+  "main": "angular-embedly.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.18"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.18"
+  },
+  "_release": "0.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.4",
+    "commit": "da5bb4ebb97e415ce54b9290cd7284c48e896958"
+  },
+  "_source": "git://github.com/Urigo/angular-embedly.git",
+  "_target": "~0.0.4",
+  "_originalSource": "angular-embedly",
+  "_direct": true
+}

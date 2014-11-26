@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="AngularScrapbookApp">
+<head>
+<!-- build:css ./_assets/combined.css -->
+<link rel="stylesheet" type="text/css" href="./bower_components/gumby/css/gumby.css" />
+<link rel="stylesheet" type="text/css" href="./app.css" />
+<!-- endbuild -->
+<meta charset='UTF-8' />
+<title>AngularJS Scrapbook</title>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="row">
+      <div class="four columns">
+        <ul>
+          <li>
+            <a href="#/">Scrapbook</a>
+          </li>
+          <li>
+            <a href="#/new">Create New Posting</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div ng-view></div>
+  </div>
+  
+<!-- build:js ./_assets/combined.js -->
+<script type="text/javascript" src="./bower_components/underscore/underscore.js"></script>
+<script type="text/javascript" src="./bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="./bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="./bower_components/angular-animate/angular-animate.js"></script>
+<script type="text/javascript" src="./bower_components/angular-route/angular-route.js"></script>
+<script type="text/javascript" src="./bower_components/angular-messages/angular-messages.js"></script>
+<script type="text/javascript" src="./bower_components/angular-embedly/angular-embedly.js"></script>
+<script type="text/javascript" src="./app.js"></script>
+<!-- endbuild -->
+</body>
+</html>
