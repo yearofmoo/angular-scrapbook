@@ -12,10 +12,10 @@
   <div ng-transclude></div>
   <nav class="scrapbook-ctrl-actions">
     <span class="btn medium primary">
-      <a href="{{ ctrl.data.url }}" target="_blank">View</a>
+      <a href="{{ ctrl.data.url }}" target="_blank" class="view-action">View</a>
     </span>
     <span class="btn medium danger">
-      <button ng-click="ctrl.remove()">Remove</button>
+      <button ng-click="ctrl.remove()" class="remove-action">Remove</button>
     </span>
   </nav>
 </div>

@@ -11,5 +11,13 @@
     "gulp-rev": "^0.3.2",
     "gulp-uglify": "^0.3.0",
     "gulp-clean": "^0.2.4"
+  },
+  "dependencies": {
+    "gulp-karma": "0.0.4",
+    "jasmine-core": "^2.1.2",
+    "karma": "^0.12.28",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-jasmine": "^0.3.1",
+    "karma-ng-html2js-preprocessor": "^0.1.2"
   }
 }

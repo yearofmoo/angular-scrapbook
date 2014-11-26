@@ -7,6 +7,7 @@ var minifyCss = require('gulp-minify-css');
 var usemin = require('gulp-usemin');
 var rev = require('gulp-rev');
 var clean = require('gulp-clean');
+var karma = require('gulp-karma');
 
 gulp.task('copy-html-files', function() {
   gulp.src(['./app/**/*.html', './app/ttc-stations.json', '!./app/index.html'], {base: './app'})
@@ -26,6 +27,25 @@ gulp.task('connect', function() {
   connect.server({
     root: 'app/'
   });
+});
+
+gulp.task('test', function() {
+  var files = [
+    './app/bower_components/jquery/dist/jquery.js',
+    './app/bower_components/underscore/underscore.js',
+    './app/bower_components/angular/angular.js',
+    './app/bower_components/angular-animate/angular-animate.js',
+    './app/bower_components/angular-route/angular-route.js',
+    './app/bower_components/angular-messages/angular-messages.js',
+    './app/bower_components/angular-embedly/angular-embedly.js',
+    './app/bower_components/angular-mocks/angular-mocks.js',
+    './app/app.js',
+    './app/scrapbook-entry-template.html',
+    './app/scrapbook-embed-field-template.html',
+    './test/appSpec.js'
+  ];
+  gulp.src(files)
+    .pipe(karma({ configFile: 'karma.conf.js', action: 'watch' }));
 });
 
 // Default Task
