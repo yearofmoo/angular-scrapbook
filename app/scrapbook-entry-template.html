@@ -1,5 +1,10 @@
 <img ng-src="{{ ctrl.data.image }}" />
-<div class="details">
+<div class="details center" ng-if="ctrl.data.video">
+  <span class="btn default large">
+    <a href="{{ ctrl.data.url }}" target="_blank">Watch Video</a>
+  </span>
+</div>
+<div class="details" ng-if="!ctrl.data.video">
   <h3 class="heading">
     {{ ctrl.data.title }}
   </h3>

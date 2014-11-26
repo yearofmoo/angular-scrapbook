@@ -99,6 +99,8 @@ angular.module('AngularScrapbookApp',
         return {
           description: data.description,
           image: image,
+          media: data.media,
+          video: data.media && data.media.html ? true : false,
           keywords: keywords,
           type: data.type,
           url: data.url,

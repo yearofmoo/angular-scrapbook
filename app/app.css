@@ -11,6 +11,7 @@ scrapbook-list {
   display: -webkit-flex;
   display:flex;
 
+
   -webkit-flex-flow: wrap row;
   flex-flow: wrap row;
 }
@@ -18,13 +19,12 @@ scrapbook-list {
 scrapbook-entry {
   min-width:400px;
   max-height:300px;
-  height:300px;
+  min-height:300px;
   border:10px solid white;
   position:relative;
   overflow-y:hidden;
     
   flex:1;
-  flex-grow: 3;
 }
 
 scrapbook-entry img {
@@ -51,6 +51,15 @@ scrapbook-entry .details {
 scrapbook-entry .details,
 scrapbook-entry .heading {
   color:white;
+}
+
+.center {
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 scrapbook-entry .heading {
